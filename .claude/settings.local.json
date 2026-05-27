@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Remove-Item *)",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)",
+      "Bash(Get-ChildItem C:\\\\Users\\\\jsanc\\\\projects\\\\balloonsave\\\\public\\\\animals *)",
+      "PowerShell(New-Item *)"
+    ]
+  }
+}

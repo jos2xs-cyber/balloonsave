@@ -1,0 +1,49 @@
+{
+  "id": "sky-festival",
+  "name": "Sky Festival",
+  "backgroundGradient": ["#2980b9", "#6dd5fa", "#ffffff"],
+  "waveCount": 2,
+  "narrationLines": [
+    "Oh no! Animals are floating away on balloons!",
+    "Can you rescue them and bring them to the parade?",
+    "Tap the balloons to pop them and save the animals!"
+  ],
+  "animals": [
+    {
+      "type": "penguin",
+      "balloonColors": ["blue", "yellow"],
+      "spawnDelayMs": 500,
+      "riseSpeedPx": 40
+    },
+    {
+      "type": "tiger",
+      "balloonColors": ["orange", "red"],
+      "spawnDelayMs": 2500,
+      "riseSpeedPx": 35
+    },
+    {
+      "type": "llama",
+      "balloonColors": ["purple", "green"],
+      "spawnDelayMs": 4500,
+      "riseSpeedPx": 30
+    },
+    {
+      "type": "monkey",
+      "balloonColors": ["orange", "yellow"],
+      "spawnDelayMs": 1500,
+      "riseSpeedPx": 45
+    },
+    {
+      "type": "frog",
+      "balloonColors": ["green", "blue"],
+      "spawnDelayMs": 3500,
+      "riseSpeedPx": 38
+    },
+    {
+      "type": "duck",
+      "balloonColors": ["yellow", "orange"],
+      "spawnDelayMs": 2000,
+      "riseSpeedPx": 32
+    }
+  ]
+}
