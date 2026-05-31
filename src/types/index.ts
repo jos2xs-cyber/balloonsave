@@ -7,6 +7,8 @@ export type InteractionType = 'tap-balloon' | 'drag-wind' | 'tap-parachute'
 
 export type Screen = 'welcome' | 'game'
 
+export type Difficulty = 'baby' | 'bigkid' | 'nuts'
+
 export type BeatType = 'narration' | 'rescue' | 'celebration'
 
 export interface Balloon {

@@ -13,37 +13,37 @@
       "type": "bunny",
       "balloonColors": ["red", "yellow"],
       "spawnDelayMs": 500,
-      "riseSpeedPx": 50
+      "riseSpeedPx": 44
     },
     {
       "type": "elephant",
       "balloonColors": ["green", "blue"],
       "spawnDelayMs": 3000,
-      "riseSpeedPx": 25
+      "riseSpeedPx": 22
     },
     {
       "type": "unicorn",
       "balloonColors": ["purple", "yellow", "red"],
       "spawnDelayMs": 5500,
-      "riseSpeedPx": 38
+      "riseSpeedPx": 34
     },
     {
       "type": "panda",
       "balloonColors": ["blue", "purple"],
       "spawnDelayMs": 1500,
-      "riseSpeedPx": 30
+      "riseSpeedPx": 26
     },
     {
       "type": "duck",
       "balloonColors": ["yellow", "green"],
       "spawnDelayMs": 2500,
-      "riseSpeedPx": 42
+      "riseSpeedPx": 37
     },
     {
       "type": "monkey",
       "balloonColors": ["orange", "red"],
       "spawnDelayMs": 4000,
-      "riseSpeedPx": 44
+      "riseSpeedPx": 38
     }
   ]
 }

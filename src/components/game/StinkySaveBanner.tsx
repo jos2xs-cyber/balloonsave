@@ -8,7 +8,7 @@ export function StinkySaveBanner() {
     <AnimatePresence>
       {stinkySave && (
         <motion.div
-          className="absolute inset-0 z-[60] flex flex-col items-center justify-center pointer-events-none"
+          className="absolute inset-0 z-[5] flex flex-col items-center justify-center pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

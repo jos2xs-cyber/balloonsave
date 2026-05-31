@@ -7,7 +7,10 @@ import type { SceneConfig, FloatingAnimal } from '../types'
 const SPAWN_GAP_MS = 700
 
 export function useSceneSpawner(scene: SceneConfig, active: boolean) {
-  const { spawnAnimal, currentWave, floatingAnimals } = useGameStore()
+  const { spawnAnimal, currentWave, floatingAnimals, difficulty } = useGameStore()
+  const DIFF_MULT = { baby: 0.85, bigkid: 1.0, nuts: 1.50 } as const
+  const diffMult = DIFF_MULT[difficulty]
+  const maxOnScreen = difficulty === 'nuts' ? 6 : 3
 
   const queueRef      = useRef<FloatingAnimal[]>([])
   const lastSpawnRef  = useRef(0)
@@ -19,7 +22,7 @@ export function useSceneSpawner(scene: SceneConfig, active: boolean) {
     if (!active || currentWave >= scene.waveCount) return
     setAllSpawned(false)
     lastSpawnRef.current = 0
-    queueRef.current = buildWaveAnimals(scene.animals, currentWave)
+    queueRef.current = buildWaveAnimals(scene.animals, currentWave, diffMult)
   }, [active, currentWave, scene]) // eslint-disable-line
 
   // Drain queue: each time floatingAnimals changes, check if we can spawn the next one
@@ -28,7 +31,7 @@ export function useSceneSpawner(scene: SceneConfig, active: boolean) {
 
     // Count only active (non-rescued) non-skunks — skunk is a bonus and doesn't block spawning
     const nonSkunks = floatingAnimals.filter(a => a.type !== 'skunk' && !a.isRescued).length
-    if (nonSkunks >= 3) return
+    if (nonSkunks >= maxOnScreen) return
 
     const wait = Math.max(0, SPAWN_GAP_MS - (Date.now() - lastSpawnRef.current))
 
@@ -41,7 +44,7 @@ export function useSceneSpawner(scene: SceneConfig, active: boolean) {
       const live = useGameStore.getState().floatingAnimals
       const liveNonSkunks = live.filter(a => a.type !== 'skunk' && !a.isRescued).length
 
-      if (liveNonSkunks >= 3) {
+      if (liveNonSkunks >= maxOnScreen) {
         // Slot is full by the time the timer fired — put animal back
         queueRef.current.unshift(template)
         return

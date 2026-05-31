@@ -7,9 +7,9 @@ const uid = () => `a-${Date.now()}-${idCounter++}`
 // Per-wave settings: how many animals and rise-speed scaling.
 // Spawn timing is now driven by useSceneSpawner (queue-based, max 3 on screen).
 const WAVE_SETTINGS = [
-  { count: 20, speedMultiplier: 0.936 },
-  { count: 25, speedMultiplier: 1.260 },
-  { count: 30, speedMultiplier: 1.593 },
+  { count: 20, speedMultiplier: 0.811 },
+  { count: 25, speedMultiplier: 1.092 },
+  { count: 30, speedMultiplier: 1.381 },
 ]
 
 // Pick an x% position that is at least MIN_DIST away from every existing animal.
@@ -51,12 +51,13 @@ export function buildFloatingAnimal(
 
 export function buildWaveAnimals(
   animalConfigs: FloatingAnimalConfig[],
-  waveIndex: number
+  waveIndex: number,
+  difficultyMultiplier = 1
 ): FloatingAnimal[] {
   const settings = WAVE_SETTINGS[Math.min(waveIndex, WAVE_SETTINGS.length - 1)]
   const animals = Array.from({ length: settings.count }, (_, i) => {
     const cfg = animalConfigs[i % animalConfigs.length]
-    return buildFloatingAnimal(cfg, settings.speedMultiplier)
+    return buildFloatingAnimal(cfg, settings.speedMultiplier * difficultyMultiplier)
   })
 
   // Always place one skunk in the wave at 2× speed, at a random queue position

@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import type {
   Screen,
+  Difficulty,
   FloatingAnimal,
   ParadeState,
   ParadeMember,
@@ -49,6 +50,10 @@ interface GameStore {
   stinkySave: boolean
   triggerStinkySave: () => void
   clearStinkySave: () => void
+
+  // Difficulty
+  difficulty: Difficulty
+  setDifficulty: (d: Difficulty) => void
 
   // Wind gust
   windGust: { id: string; direction: 'left' | 'right' } | null
@@ -182,14 +187,17 @@ export const useGameStore = create<GameStore>((set, get) => ({
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel()
       const utterance = new SpeechSynthesisUtterance('Stinky Save!')
-      utterance.pitch = 1.3
-      utterance.rate = 0.85
+      utterance.pitch = 0.2
+      utterance.rate = 0.7
       utterance.volume = 1
       window.speechSynthesis.speak(utterance)
     }
     setTimeout(() => set({ stinkySave: false }), 3000)
   },
   clearStinkySave: () => set({ stinkySave: false }),
+
+  difficulty: 'bigkid',
+  setDifficulty: (difficulty) => set({ difficulty }),
 
   windGust: null,
   triggerWindGust: () => {
